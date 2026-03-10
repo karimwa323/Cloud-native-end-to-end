@@ -17,3 +17,16 @@ module "jenkins" {
   instance_type = "t3.micro"
   key_name = "frankfurt_key_pair"
 }
+
+resource "aws_eip" "jenkins_eip" {
+  instance = module.jenkins.instance_id
+  domain   = "vpc" 
+
+  tags = {
+    Name = "jenkins-static-ip"
+  }
+}
+
+output "jenkins_static_public_ip" {
+  value = aws_eip.jenkins_eip.public_ip
+}
