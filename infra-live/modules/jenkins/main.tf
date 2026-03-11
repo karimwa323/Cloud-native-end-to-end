@@ -42,6 +42,8 @@ resource "aws_instance" "jenkins" {
   instance_type = var.instance_type
   subnet_id     = var.subnet_id
 
+  iam_instance_profile = var.iam_instance_profile
+
   vpc_security_group_ids = [
     aws_security_group.jenkins_sg.id
   ]

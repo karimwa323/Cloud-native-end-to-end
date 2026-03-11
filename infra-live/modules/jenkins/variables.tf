@@ -18,3 +18,8 @@ variable "subnet_id" {
 variable "key_name" {
   type = string
 }
+
+variable "iam_instance_profile" {
+  description = "The name of the IAM instance profile for Jenkins"
+  type        = string
+}
