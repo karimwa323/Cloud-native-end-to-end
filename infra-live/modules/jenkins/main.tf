@@ -11,6 +11,13 @@ resource "aws_security_group" "jenkins_sg" {
   }
 
   ingress {
+    from_port   = 50000
+    to_port     = 50000
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
@@ -55,4 +62,20 @@ resource "aws_instance" "jenkins" {
   tags = {
     Name = "jenkins-master"
   }
+}
+
+resource "aws_ebs_volume" "jenkins_data" {
+  availability_zone = "eu-central-1a"
+  size              = 20  
+  type              = "gp3"
+
+  tags = {
+    Name = "jenkins-data-disk"
+  }
+}
+
+resource "aws_volume_attachment" "jenkins_att" {
+  device_name = "/dev/sdh"
+  volume_id   = aws_ebs_volume.jenkins_data.id
+  instance_id = aws_instance.jenkins.id
 }

@@ -25,7 +25,7 @@ module "jenkins" {
   vpc_id           = data.terraform_remote_state.network.outputs.vpc_id
   subnet_id = data.terraform_remote_state.network.outputs.public_subnets[0]
   iam_instance_profile = data.terraform_remote_state.iam.outputs.jenkins_profile_name
-  instance_type = "t3.micro"
+  instance_type = "m7i-flex.large"
   key_name = "frankfurt_key_pair"
 }
 

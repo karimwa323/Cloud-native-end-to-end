@@ -62,7 +62,6 @@ resource "aws_iam_role_policy_attachment" "jenkins_eks_policy" {
   role       = aws_iam_role.jenkins_role.name
 }
 
-# 1. بنعمل الـ Policy ونربطها بنفس الـ Variable اللي عندك
 resource "aws_iam_policy" "jenkins_eks_policy" {
   name        = "${var.environment}-jenkins-eks-policy"
   description = "Allows Jenkins to describe EKS cluster for Kubeconfig update"
