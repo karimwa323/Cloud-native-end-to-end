@@ -43,6 +43,7 @@ jobs:
     - name: Update Kubeconfig
       run: |
         aws eks update-kubeconfig --region eu-central-1 --name cloud-native-eks-prod
+        sed -i "s|image:.*cloud-native-backend:.*|image: ${{ steps.login-ecr.outputs.registry }}/cloud-native-backend:${{ github.run_id }}|g" k8s/backend-deployment.yaml
 
     - name: Deploy to EKS
       run: |
