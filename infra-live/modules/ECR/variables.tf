@@ -8,7 +8,6 @@ variable "environment" {
   type        = string
 }
 
-
 variable "image_tag_mutability" {
   description = " Mutability"
   type        = string

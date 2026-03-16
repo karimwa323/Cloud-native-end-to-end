@@ -12,3 +12,10 @@ module "ecr" {
   repo_name   = "cloud-native-app"
   environment = "prod"
 }
+
+
+module "ecr-2" {
+  source      = "../../modules/ECR"
+  repo_name   = "cloud-native-backend"
+  environment = "prod"
+}
