@@ -1,8 +1,8 @@
-FROM node:20-alpine
+FROM node:20-alpine3.19
 
 #upgrade the libs
-RUN apk update && apk upgrade --no-cache\
-    RUN apk add --no-cache "zlib>=1.3.2-r0" "openssl>=3.3.6-r0"
+RUN apk update && apk upgrade --no-cache
+    # RUN apk add --no-cache "zlib>=1.3.2-r0" "openssl>=3.3.6-r0"
 
 WORKDIR /usr/src/app
 
