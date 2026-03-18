@@ -6,11 +6,13 @@ on:
       - main
     paths:
       - 'simple-website/**' 
+      - '.github/workflows/**'
   pull_request:
     branches:
       - main
     paths:
       - 'simple-website/**'
+      - '.github/workflows/**'
 
 jobs:
   sonar-analysis:
@@ -28,7 +30,7 @@ jobs:
         with:
           args: >
             -Dsonar.projectKey=karimwa323_Cloud-native-end-to-end
-            -Dsonar.organization=karimwa323
+            -Dsonar.organization=karimovic
             -Dsonar.sources=simple-website/
 
   build-and-push:
