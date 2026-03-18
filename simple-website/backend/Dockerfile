@@ -1,4 +1,4 @@
-FROM node:20-alpine3.19
+FROM node:20-alpine
 
 #upgrade the libs
 RUN apk update && apk upgrade --no-cache
