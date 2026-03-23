@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: backend-app
-        image: <ACCOUNT_ID>.dkr.ecr.eu-central-1.amazonaws.com/cloud-native-backend
+        image: 010438480291.dkr.ecr.eu-central-1.amazonaws.com/cloud-native-backend
         ports:
         - containerPort: 3000
 ---
