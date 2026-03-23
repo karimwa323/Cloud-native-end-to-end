@@ -62,7 +62,7 @@ jobs:
           image-ref: '${{ matrix.component }}:${{ github.run_id }}'
           format: 'table'
           exit-code: '1'
-          severity: 'CRITICAL,HIGH'
+          # severity: 'CRITICAL,HIGH'
 
       - name: Login to Amazon ECR
         id: login-ecr
