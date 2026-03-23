@@ -77,11 +77,11 @@ jobs:
           docker tag ${{ matrix.component }}:${{ github.run_id }} ${{ steps.login-ecr.outputs.registry }}/${{ matrix.repo_name }}:${{ github.run_id }}
           docker push ${{ steps.login-ecr.outputs.registry }}/${{ matrix.repo_name }}:${{ github.run_id }}
 
-      - name: Update Frontend Manifest
+      - name: Update kubeconfig
+        run: |
+          aws eks update-kubeconfig --region eu-central-1 --name <YOUR_CLUSTER_NAME>
+      
+      - name: Deploy to EKS
         run: |
           sed -i "s|image:.*frontend:.*|image: ${{ steps.login-ecr.outputs.registry }}/cloud-native-frontend:${{ github.run_id }}|g" k8s/frontend-deployment.yaml
-          git config --global user.name 'github-actions'
-          git config --global user.email 'actions@github.com'
-          git add k8s/frontend-deployment.yaml
-          git commit -m "Update frontend image to ${ { github.run_id } }"
-          git push
+          kubectl apply -f k8s/frontend-deployment.yaml
