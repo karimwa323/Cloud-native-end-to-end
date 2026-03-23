@@ -22,6 +22,10 @@ const pool = mysql.createPool({
   queueLimit: 0
 });
 
+app.get('/', (req, res) => {
+  res.status(200).send('OK');
+});
+
 // Routes
 app.get('/api/health', (req, res) => {
   res.json({ status: 'Backend is running' });
