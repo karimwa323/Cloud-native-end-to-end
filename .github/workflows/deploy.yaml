@@ -79,7 +79,7 @@ jobs:
 
       - name: Update kubeconfig
         run: |
-          aws eks update-kubeconfig --region eu-central-1 --name <YOUR_CLUSTER_NAME>
+          aws eks update-kubeconfig --region eu-central-1 --name cloud-native-eks-prod
       
       - name: Deploy to EKS
         run: |
